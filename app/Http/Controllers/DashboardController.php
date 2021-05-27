@@ -25,7 +25,7 @@ class DashboardController extends Controller
         ->get();
         foreach ($dbresponse as $key => $postdb) {
             //TODO eloquent
-            $post = new PostObject($postdb->id, $postdb->content, $postdb->author, $postdb->created_at);
+            $post = new PostObject($postdb->post_id, $postdb->content, $postdb->author, $postdb->created_at);
             $post->setAuthor($postdb->first_name.' '.$postdb->last_name);
             $post->setLikes(intval($postdb->likes));
 
