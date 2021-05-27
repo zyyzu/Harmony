@@ -9,31 +9,29 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index(){
-        //dd(Auth::user()->first_name);
+        //pobranie postow z bazy
         $posts = array();
         $dbresponse = DB::table('posts')
         ->join('users', 'posts.author', '=', 'users.id')
         ->select('posts.id as post_id','posts.content','posts.author', 'users.first_name','users.last_name', 'users.id as user_id','posts.visibility', 'posts.created_at', DB::raw('(SELECT COUNT(*) FROM likes WHERE likes.post_id=posts.id) AS likes'))
         ->where('posts.author', '=', Auth::id())
-        //->orWhere('posts.author', DB::raw('(SELECT friends.user1_id FROM friends WHERE friends.user2_id='.Auth::id().')'))
         ->orWhereRaw(DB::raw('posts.author IN (SELECT friends.user2_id FROM friends WHERE friends.user1_id='.Auth::id().')'))
         ->orWhereRaw(DB::raw('posts.author IN (SELECT friends.user1_id FROM friends WHERE friends.user2_id='.Auth::id().')'))
-        //->orWhere('posts.author', '=', DB::raw('(SELECT friends.user2_id FROM friends WHERE friends.user1_id='.Auth::id().')'));
-        //->get();
-        //dd($dbresponse);
-        //dd(count($dbresponse));
-
         ->orderByDesc('posts.id')
         ->paginate(15);
-        //dd($dbresponse->toSql());
+        //TODO komentarze
         foreach ($dbresponse as $key => $postdb) {
+            //TODO eloquent
             $post = new PostObject($postdb->post_id, $postdb->content, $postdb->author, $postdb->created_at);
             $post->setAuthor($postdb->first_name.' '.$postdb->last_name);
             $post->setLikes(intval($postdb->likes));
+
+            //TODO avoid 15 database querries
             $liked = DB::table('likes')
             ->where('post_id', $postdb->post_id)
             ->where('user_id', Auth::id())
             ->count();
+
             if($liked>0){
                 $post->setLiked(true);
             }else{
@@ -50,6 +48,7 @@ class DashboardController extends Controller
         ]);
     }
 }
+//TODO Eloquent
 class Comment{
     private int $id;
     private int $authorId;

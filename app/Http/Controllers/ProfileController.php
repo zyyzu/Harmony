@@ -35,7 +35,7 @@ class ProfileController extends Controller
                 'last_name'=>$friend->last_name
             ];
         }
-       // dd($friendsToView);
+        //TODO avatars
         return view("profile.main", [
             'userFirstName'=> Auth::user()->first_name,
             'userLastName'=> Auth::user()->last_name,

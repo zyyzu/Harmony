@@ -10,15 +10,15 @@ class PostController extends Controller
 {
     public function createPost(Request $request){
         if(Auth::check()){
+            //content validation
             $validated = $request->validate([
                 'post_content' => ['required', 'min:1', 'max:1000'],
                 'post_submit' => ['accepted']
             ]);
-            $post_content = $request->post_content;
-            //dd(Auth::id());
+            //insert to database
             $post = [
                 'id' => null,
-                'content' => $post_content,
+                'content' => $request->post_content,
                 'author' => Auth::id(),
                 'visibility' => 3,
                 'created_at' => Carbon::now(),

@@ -27,16 +27,17 @@ class SinglePostAjax extends Controller
             );
             return response(json_encode($tojson), 200, ['Content-Type'=>'text/json']);
         }
-//check is arleady liked
+        //check is arleady liked by user
         $likecheck = DB::table('likes')
         ->select('id')
         ->where('post_id', $id)
         ->where('user_id', Auth::id())
         ->get();
-
+        //number of likes
         $likes = DB::table('likes')
         ->where('post_id', $id)
         ->count();
+
         if(count($likecheck)==0){
             $tojson = array(
                 'status'=>200,

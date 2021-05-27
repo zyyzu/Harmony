@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'ownProfile'])->name('user.profile.own');
     Route::post('post/create', [\App\Http\Controllers\PostController::class, 'createPost'])->name("post.create");
+    //TODO move ajax to api.php
     Route::post('ajax/liketoggle/{id}', [\App\Http\Controllers\AJAX\SinglePostAjax::class, 'toggleLikeAjax']);
 });
 
