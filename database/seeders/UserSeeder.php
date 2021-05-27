@@ -21,10 +21,10 @@ class UserSeeder extends Seeder
         DB::table('users')->truncate();
         $exampleUser = [
             'id' => 1,
-            'first_name' => 'Marian',
+            'first_name' => 'TestImie',
             'second_name' => null,
-            'last_name' => 'Paździoch',
-            'email'=> 'pazdzioch.m@marianowo.pl',
+            'last_name' => 'TestNazwisko',
+            'email'=> 'nazwisko.imie@xyz.pl',
             'email_verified_at'=> null,
             'password'=> '$2y$10$CClN6mgc4s34fLXXxgBSSOoRy6Nvyp56TnqXnwIZfN29/11I1BAVC',
             'remember_token'=>null,

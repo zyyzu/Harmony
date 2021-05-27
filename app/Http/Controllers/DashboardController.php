@@ -20,18 +20,27 @@ class DashboardController extends Controller
         ->orderByDesc('posts.id')
         ->paginate(15);
         //TODO komentarze
+        $liked = DB::table('likes')
+        ->where('user_id', Auth::id())
+        ->get();
         foreach ($dbresponse as $key => $postdb) {
             //TODO eloquent
-            $post = new PostObject($postdb->post_id, $postdb->content, $postdb->author, $postdb->created_at);
+            $post = new PostObject($postdb->id, $postdb->content, $postdb->author, $postdb->created_at);
             $post->setAuthor($postdb->first_name.' '.$postdb->last_name);
             $post->setLikes(intval($postdb->likes));
 
             //TODO avoid 15 database querries
-            $liked = DB::table('likes')
+            /*$liked = DB::table('likes')
             ->where('post_id', $postdb->post_id)
             ->where('user_id', Auth::id())
-            ->count();
-
+            ->count();*/
+            $likeSwitch = false;
+            foreach($liked as $key => $like){
+                if($like->post_id==$postdb->post_id){
+                    $likeSwitch = true;
+                    break;
+                }
+            }
             if($liked>0){
                 $post->setLiked(true);
             }else{
