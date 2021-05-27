@@ -41,7 +41,7 @@ class DashboardController extends Controller
                     break;
                 }
             }
-            if($liked>0){
+            if($likeSwitch){
                 $post->setLiked(true);
             }else{
                 $post->setLiked(false);
