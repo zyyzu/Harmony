@@ -21,8 +21,8 @@
             <div id="bannerjs" class="banner-background">
                 background holder
             </div>
-            <div id="profilepick_js" class="banner-profile-photo">
-                    <img src="{{ $profile_picture }}" alt="Profile picture">
+            <div id="profilepick_js" class="banner-profile-photo" >
+                    <img id="profile_picture" src="{{ $profile_picture }}" alt="Profile picture" class="profile_picture_img">
                     <p id="profilepick_p" style="visibility: hidden;">Zmień zjęcie profilowe </p>
             </div>
 
