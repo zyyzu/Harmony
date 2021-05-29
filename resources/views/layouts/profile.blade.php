@@ -18,11 +18,12 @@
 <div class="container container-dash">
     <div class="row position-relative">
         <div class="banner-container col-sm-12 col-md-12 col-lg-12 col-xxl-12">
-            <div class="banner-background">
+            <div id="bannerjs" class="banner-background">
                 background holder
             </div>
-            <div class="banner-profile-photo">
-                    test
+            <div id="profilepick_js" class="banner-profile-photo">
+                    <img src="{{ $profile_picture }}" alt="Profile picture">
+                    <p id="profilepick_p" style="visibility: hidden;">Zmień zjęcie profilowe </p>
             </div>
 
             <div class="banner-info bg-primary">
