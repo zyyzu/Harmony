@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware'=>['auth']], function(){
     Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'ownProfile'])->name('user.profile.own');
     Route::get('/edit/profile', [\App\Http\Controllers\ProfileController::class, 'showEditForm'])->name('user.editprofile.form');
-    Route::post('/edit/profile', [\App\Http\Controllers\ProfileController::class, 'editProfile'])->name('user.editprofile.edit');
+    Route::post('/edit/profile/update', [\App\Http\Controllers\ProfileController::class, 'editProfile'])->name('user.editprofile.update');
 });
 Route::get('/', function () {
     if(Auth::check()) return redirect('/wall');

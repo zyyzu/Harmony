@@ -23,7 +23,7 @@
             </div>
             <div id="profilepick_js" class="banner-profile-photo" >
                     <img id="profile_picture" src="{{ $profile_picture }}" alt="Profile picture" class="profile_picture_img">
-                    <p id="profilepick_p" style="visibility: hidden;">Zmień zjęcie profilowe </p>
+                    <p id="profilepick_p" style="visibility: hidden;"><a href="{{route('user.editprofile.form')}}"><b>Zmień zjęcie profilowe</b><br><i class="fas fa-images"></i></a></p>
             </div>
 
             <div class="banner-info bg-primary">

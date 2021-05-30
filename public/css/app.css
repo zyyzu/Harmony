@@ -16202,3 +16202,13 @@ readers do not read off random characters that represent icons */
   width: 118px;
   border-radius: 50%;
 }
+
+#profilepick_p {
+  text-align: center;
+  position: fixed;
+  top: 25%;
+}
+#profilepick_p a {
+  color: black;
+  text-decoration: none;
+}
