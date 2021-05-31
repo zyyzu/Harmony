@@ -16,13 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/wall', [\App\Http\Controllers\DashboardController::class, 'index'])->name('user.wall');
-    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'ownProfile'])->name('user.profile.own');
-    Route::post('post/create', [\App\Http\Controllers\PostController::class, 'createPost'])->name("post.create");
+    Route::post('post/create', [\App\Http\Controllers\Posts\CreatePost::class, 'createPost'])->name("post.create");
     //TODO move ajax to api.php
     Route::post('ajax/liketoggle/{id}', [\App\Http\Controllers\AJAX\SinglePostAjax::class, 'toggleLikeAjax']);
 });
-
+Route::group(['middleware'=>['auth']], function(){
+    Route::get('/profile', [\App\Http\Controllers\Profile\UserOwnProfile::class, 'ownProfile'])->name('user.profile.own');
+    Route::get('/edit/profile', [\App\Http\Controllers\Profile\UserEditProfileForm::class, 'showEditForm'])->name('user.editprofile.form');
+    Route::post('/edit/profile/update', [\App\Http\Controllers\Profile\UserEditProfile::class, 'editProfile'])->name('user.editprofile.update');
+});
 Route::get('/', function () {
     if(Auth::check()) return redirect('/wall');
     else return redirect('/login');

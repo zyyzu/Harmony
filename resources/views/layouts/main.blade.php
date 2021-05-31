@@ -16,14 +16,19 @@
     @include('layouts.nav')
 </header>
 <div class="container container-dash">
+    <div class="row position-relative">
+
+
+    </div>
     <div class="row">
-        <aside class="col-sm-2">
+        <aside class="col-sm-3">
             @yield('aside')
         </aside>
-        <main class="col-md-10">
+        <main class="col-md-9">
             @yield('mainblock')
         </main>
     </div>
 </div>
 </body>
 </html>
+

@@ -16190,4 +16190,25 @@ readers do not read off random characters that represent icons */
   transform: translate(-50%, -90%);
   border: 5px #3490dc solid;
   background: pink;
+  padding: 0 !important;
+}
+
+.profile_picture_img {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 118px;
+  border-radius: 50%;
+}
+
+#profilepick_p {
+  text-align: center;
+  position: fixed;
+  top: 25%;
+}
+#profilepick_p a {
+  color: black;
+  text-decoration: none;
 }

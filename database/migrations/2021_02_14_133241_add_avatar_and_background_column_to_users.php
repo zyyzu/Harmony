@@ -14,8 +14,8 @@ class AddAvatarAndBackgroundColumnToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar-url')->nullable();
-            $table->string('background-url')->nullable();
+            $table->string('avatar_url')->nullable();
+            $table->string('background_url')->nullable();
         });
     }
 
@@ -27,8 +27,8 @@ class AddAvatarAndBackgroundColumnToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('avatar-url');
-            $table->dropColumn('background-url');
+            $table->dropColumn('avatar_url');
+            $table->dropColumn('background_url');
         });
     }
 }
