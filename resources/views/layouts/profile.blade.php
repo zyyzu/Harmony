@@ -18,8 +18,8 @@
 <div class="container container-dash">
     <div class="row position-relative">
         <div class="banner-container col-sm-12 col-md-12 col-lg-12 col-xxl-12">
-            <div id="bannerjs" class="banner-background">
-                background holder
+            <div id="bannerjs" class="banner-background text-center">
+                <img src="{{$background_picture}}" alt="Background picture" class="background-picture">
             </div>
             <div id="profilepick_js" class="banner-profile-photo" >
                     <img id="profile_picture" src="{{ $profile_picture }}" alt="Profile picture" class="profile_picture_img">

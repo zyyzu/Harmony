@@ -37,14 +37,13 @@ class UserOwnProfile extends Controller
                 'last_name'=>$friend->last_name
             ];
         }
-       //dd(Storage::disk('defaults')->get('default_avatar.png'));
-        //TODO avatars
-        $profileUrl = DB::table('users')->select(['avatar_url'])->where('id', Auth::id())->first();
+        $picturesUrls = DB::table('users')->select(['avatar_url', 'background_url'])->where('id', Auth::id())->first();
 
         return view("profile.main", [
             'userFirstName'=> Auth::user()->first_name,
             'userLastName'=> Auth::user()->last_name,
-            'profile_picture' => ($profileUrl == null) ? Storage::disk('defaults')->url('default_avatar.png') : Storage::url($profileUrl->avatar_url),
+            'profile_picture' => ($picturesUrls->avatar_url == null) ? Storage::disk('defaults')->url('default_avatar.png') : Storage::url($picturesUrls->avatar_url),
+            'background_picture' => ($picturesUrls->background_url == null) ? Storage::disk('defaults')->url('default_background.png') : Storage::url($picturesUrls->background_url),
             'friendsCount'=>count($friendsIDs),
             'friends'=>$friendsToView
         ]);
