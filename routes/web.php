@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/wall', [\App\Http\Controllers\DashboardController::class, 'index'])->name('user.wall');
+    Route::get('/wall', [\App\Http\Controllers\Posts\UserWall::class, 'index'])->name('user.wall');
     Route::post('post/create', [\App\Http\Controllers\Posts\CreatePost::class, 'createPost'])->name("post.create");
     //TODO move ajax to api.php
     Route::post('ajax/liketoggle/{id}', [\App\Http\Controllers\AJAX\SinglePostAjax::class, 'toggleLikeAjax']);

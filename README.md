@@ -3,5 +3,6 @@ Serwis społecznościowy
 //TODO porobić dalej po maturach
 
 UPDATE 1:
-1. Zdjęcie profilowe + edycja profilu
-2. Porządki w kodzie
+1. Zdjęcie profilowe
+2. Edycja profilu
+3. Porządki w kodzie
