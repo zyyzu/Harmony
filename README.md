@@ -9,3 +9,6 @@ UPDATE 1:
 
 UPDATE 2:
 1. Profil: Zdjęcie w tle
+
+UPDATE 3:
+1. Zabezpieczenia: Gate do sprawdzania czy użytkownik może polubić dany post

@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class SinglePostAjax extends Controller
 {
     public function toggleLikeAjax(int $id, Request $request){
         if(!$request->ajax()){
             return response("ajax expected", 200, ['Content-Type'=>'text/plain']);
+        }
+        if(Gate::denies('post-visibility', $id)){
+            return response("Unathorized access", 403, ['Content-Type'=>'text/plain']);
         }
         //TODO sprawdzenie czy obecna osoba moze polajkować dany post
         $postcheck = DB::table('posts')
